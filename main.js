@@ -8,7 +8,7 @@ camera = document.getElementById("camera");
 
 Webcam.attach('camera');
 
-function take_snapshot() {
+function take_Snapshot() {
     Webcam.snap(function(data_uri){
         document.getElementById("results").innerHTML = '<img id="captured_image" src="'+ data_uri +'">'
     })
@@ -32,12 +32,12 @@ function check() {
     classifier.classify(img, gotResult);
 }
 
-function gotResult(error, result) {
+function gotResult(error, results) {
     if(error){
-        console.error(error);
+        console.log(error);
     }
     else{
-        console.log(result);
+        console.log(results);
         document.getElementById("result_emotion_name").innerHTML = results[0].label;
         document.getElementById("result_emotion_name").innerHTML = results[1].label;
 
@@ -45,22 +45,22 @@ function gotResult(error, result) {
         prediction_2 = results[1].label;
         speak();
         if (results[0].label == "smile") {
-            document.getElementById("update_emoji").innerHTML = "&#128522";
+            document.getElementById("result_emotion_name").innerHTML = "&#128522";
         }
         if (results[0].label == "sad") {
-            document.getElementById("update_emoji").innerHTML = "&#128532";
+            document.getElementById("result_emotion_name").innerHTML = "&#128532";
         }
         if (results[0].label == "angry") {
-            document.getElementById("update_emoji").innerHTML = "&#128548";
+            document.getElementById("result_emotion_name").innerHTML = "&#128548";
         }
         if (results[1].label == "smile") {
-            document.getElementById("update_emoji2").innerHTML = "&#128522";
+            document.getElementById("result_emotion_name2").innerHTML = "&#128522";
         }
         if (results[1].label == "sad") {
-            document.getElementById("update_emoji2").innerHTML = "&#128532";
+            document.getElementById("result_emotion_name2").innerHTML = "&#128532";
         }
         if (results[1].label == "angry") {
-            document.getElementById("update_emoji2").innerHTML = "&#128548";
+            document.getElementById("result_emotion_name2").innerHTML = "&#128548";
         }
         
     }
